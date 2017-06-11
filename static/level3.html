@@ -1,0 +1,18 @@
+<html>
+
+<script>
+var session_id = "464c41477b576833336c5f30665f666f7254757c5c7c337d";
+
+function getSession(){
+    //Get Result, Flag, and Guesses Left
+}
+function tracker(session) {
+    var xy = session.toString();
+    var buffer = '';
+    for (var i = 0; i < xy.length; i += 2)
+        buffer += String.fromCharCode(parseInt(xy.substr(i, 2), 16));
+    return buffer;
+}
+
+</script>
+</html>

@@ -1,0 +1,40 @@
+<html>
+<Head>
+    <Title>HighLow - Level 1</Title>
+</Head>
+<body>
+<center>
+<label>Guesses Remaining: </label><label id="number_of_attempts">10</label>
+</br>
+<input id="guessbox" type="text"><button id="submit" onclick="check()">Submit</button>
+</br>
+<lable id="result"></lable>
+</center>
+</body>
+</body>
+
+<script>
+    function check()
+    {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://127.0.0.1:5000/level2/' + document.getElementById("guessbox").value, true);
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.onload = function () {
+            // do something to response
+            response = JSON.parse(this.responseText);
+            document.getElementById("result").innerHTML = response[0];
+            document.getElementById("number_of_attempts").innerHTML = response[1];
+        };
+        xhr.send();
+    }
+
+    document.getElementById("guessbox")
+    .addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode == 13) {
+        document.getElementById("submit").click();
+    }
+});
+</script>
+</html>
+

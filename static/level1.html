@@ -1,0 +1,60 @@
+<html>
+<Head>
+    <Title>HighLow - Level 1</Title>
+</Head>
+<body>
+<center>
+<label>Guesses Remaining: </label><label id="number_of_attempts">10</label>
+</br>
+<input id="guessbox" type="text"><button id="submit" onclick="check()">Submit</button>
+</br>
+<lable id="result"></lable>
+</center>
+</body>
+</body>
+
+<script>
+    function check()
+    {
+        guess = parseInt(document.getElementById('guessbox').value, 10);
+        current = parseInt(document.getElementById("number_of_attempts").innerHTML, 10);
+
+        if (current > 0)
+        {
+            decrement_number_of_attempts()
+
+            if(guess === 17)
+            {
+                 document.getElementById("result").innerHTML = "FLAG{Pric3_is_RighT}";
+            }
+            if(guess < 17)
+            {
+                document.getElementById("result").innerHTML = "Higher";
+            }
+            if(guess > 17)
+            {
+                document.getElementById("result").innerHTML = "Lower";
+            }
+         }
+         else
+         {
+            document.getElementById("result").innerHTML = "Game Over";
+         }
+    }
+
+    function decrement_number_of_attempts()
+    {
+        current = parseInt(document.getElementById("number_of_attempts").innerHTML, 10);
+        document.getElementById("number_of_attempts").innerHTML = current-1;
+    }
+
+    document.getElementById("guessbox")
+    .addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode == 13) {
+        document.getElementById("submit").click();
+    }
+});
+</script>
+</html>
+
