@@ -1,5 +1,6 @@
 from random import randint
 from flask import Flask, current_app, jsonify
+from config import host
 app = Flask(__name__, static_url_path='')
 
 
@@ -58,4 +59,4 @@ def level3():
     return current_app.send_static_file('level3.html')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host=host)
