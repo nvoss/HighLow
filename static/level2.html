@@ -10,7 +10,7 @@
 <input id="guessbox" type="text"><button id="submit" onclick="check()">Submit</button>
 </br>
 <lable id="result"></lable>
-    <image id="flag"></image>
+    <image id="error"></image>
 </center>
 </body>
 </body>
@@ -29,7 +29,7 @@
             if(guess === (index+(15*21)*(2+10)+202-index)%1000)
             {
                  document.getElementById("result").innerHTML = "";
-                 document.getElementById("flag").src = "error"
+                 document.getElementById("error").src = "error"
             }
             if(guess < (index+(15*21)*(2+10)+202-index)%1000)
             {
