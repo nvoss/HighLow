@@ -29,7 +29,11 @@ def level_1_guess(guess):
     global level_1_guesses
     if level_1_guesses > 0:
         level_1_guesses -= 1
-        return jsonify(attempt_a_guess(int(guess), level_1_secret, "FLAG{Pr3s5_YoUr_lUck}"), str(level_1_guesses))
+        if guess.isdigit():
+            return jsonify(attempt_a_guess(int(guess), level_1_secret, "FLAG{Pr3s5_YoUr_lUck}"), str(level_1_guesses))
+        else:
+            level_1_guesses = 0
+            return jsonify("Cheater", "0")
     else:
         return jsonify("Game Over", "0")
 
