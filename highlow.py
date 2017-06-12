@@ -43,7 +43,7 @@ def level1():
     return current_app.send_static_file('level1.html')
 
 
-@app.route('/level2/flag')
+@app.route('/error')
 def level2_flag():
     return current_app.send_static_file('flag2.png')
 
