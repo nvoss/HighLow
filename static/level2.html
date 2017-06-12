@@ -19,21 +19,22 @@
     {
         guess = parseInt(document.getElementById('guessbox').value, 10);
         current = parseInt(document.getElementById("number_of_attempts").innerHTML, 10);
+        var index = 8
 
         if (current > 0)
         {
             decrement_number_of_attempts()
 
-            if(guess === ((15*21)*(2+10)+202)%1000)
+            if(guess === (index+(15*21)*(2+10)+202-index)%1000)
             {
                  document.getElementById("result").innerHTML = "";
                  document.getElementById("flag").src = "error"
             }
-            if(guess < ((15*21)*(2+10)+202)%1000)
+            if(guess < (index+(15*21)*(2+10)+202-index)%1000)
             {
                 document.getElementById("result").innerHTML = "Higher";
             }
-            if(guess > ((15*21)*(2+10)+202)%1000)
+            if(guess > (index+(15*21)*(2+10)+202-index)%1000)
             {
                 document.getElementById("result").innerHTML = "Lower";
             }
