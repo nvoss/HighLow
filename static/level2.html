@@ -1,6 +1,6 @@
 <html>
 <Head>
-    <Title>HighLow - Level 1</Title>
+    <Title>HighLow - Level 2</Title>
 </Head>
 <body>
 <center>
@@ -9,6 +9,7 @@
 <input id="guessbox" type="text"><button id="submit" onclick="check()">Submit</button>
 </br>
 <lable id="result"></lable>
+    <image id="flag"></image>
 </center>
 </body>
 </body>
@@ -16,16 +17,37 @@
 <script>
     function check()
     {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'level2/' + document.getElementById("guessbox").value, true);
-        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhr.onload = function () {
-            // do something to response
-            response = JSON.parse(this.responseText);
-            document.getElementById("result").innerHTML = response[0];
-            document.getElementById("number_of_attempts").innerHTML = response[1];
-        };
-        xhr.send();
+        guess = parseInt(document.getElementById('guessbox').value, 10);
+        current = parseInt(document.getElementById("number_of_attempts").innerHTML, 10);
+
+        if (current > 0)
+        {
+            decrement_number_of_attempts()
+
+            if(guess === ((15*21)*(2+10)+202)%1000)
+            {
+                 document.getElementById("result").innerHTML = "";
+                 document.getElementById("flag").src = "level2/flag"
+            }
+            if(guess < ((15*21)*(2+10)+202)%1000)
+            {
+                document.getElementById("result").innerHTML = "Higher";
+            }
+            if(guess > ((15*21)*(2+10)+202)%1000)
+            {
+                document.getElementById("result").innerHTML = "Lower";
+            }
+         }
+         else
+         {
+            document.getElementById("result").innerHTML = "Game Over";
+         }
+    }
+
+    function decrement_number_of_attempts()
+    {
+        current = parseInt(document.getElementById("number_of_attempts").innerHTML, 10);
+        document.getElementById("number_of_attempts").innerHTML = current-1;
     }
 
     document.getElementById("guessbox")
