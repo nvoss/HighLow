@@ -58,4 +58,4 @@ def level3():
     return current_app.send_static_file('level3.html')
 
 if __name__ == '__main__':
-    app.run(host=host, debug=True, port=54321)
+    app.run(host=host, debug=False, port=54321)
